@@ -2,8 +2,4 @@
 
 Teste
 
-
-[TIP]
-====
- Tip
-====
+TIP: a tip
