@@ -1,4 +1,4 @@
-# Test
+# Princípios Fundamentais
 // Settings:
 :idprefix:
 :idseparator: -
@@ -23,6 +23,19 @@ ifdef::backend-pdf[:conum-guard-yaml: # #]
 :url-fontforge-scripting: https://fontforge.github.io/en-US/documentation/scripting/
 :url-prawn: http://prawnpdf.org
 
-Teste
+## Introdução
 
-TIP: a tip
+Acumulamos muitas décadas em disciplinas de programação. Detemos um grande aparato de conceitos fundamentais que funcionam como base para 
+todas as disciplinas. Devido ao contexto tecnológico, eles evoluem muito rapidamente ou se adaptam às novas realidades e requisitos.
+
+Vivemos em uma realidade pulsante de novos frameworks e metodologias, hoje mais reconhecidas como boas práticas, para evitar qualquer tipo de limitação 
+à extrapolação das capacidades e melhorias.
+
+Ainda assim é importante discernir a aplicação de cada uma dessas novas tecnologias para haver o real ganho, mesmo que seja intangível. Algumas dessas práticas
+já tiverem sua efetividade amplamente reconhecida, outras, apesar de reconhecidas, não conseguiram alcançar seu devido local. Domain-Driven Design pode ser 
+uma dessas práticas que ainda não conquistaram sua hegemonia, mas sua aplicação, mesmo que superficial, já demonstra grandes ganhos de comunicação e melhoria 
+constante dos entregáveis produzidos.
+
+
+## Domain-Driven Design
+
