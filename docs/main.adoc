@@ -39,3 +39,88 @@ constante dos entregáveis produzidos.
 
 ## Domain-Driven Design
 
+No livro escrito por Eric Evans, Domain-Driven Desing: Tackling Complexity in the Heart of Software, conseguimos um  manual completo do que seria e como 
+aplicar DDD ao ciclo de vida de um software. 
+
+Ao lê-lo conseguimos depreender que o método vai além do do que sabe sobre componentes de software, além de se adequar muito bem a qualquer uma das fases do ciclo
+de vida no desenvolvimento de aplicações. Seja usando puro XP ou Scrum, as disciplinas ensinadas demonstram como focar mais nas entregas de softwares funcionais 
+e menos na necessidade de documentação e criação de artefatos, uma vez que a proposta vai além do modelo, mas abarca a comunicação utilizada pelo negócio.
+
+O Negócio é a base de toda a comunicação e ela é refletida no Modelo. Este, que não se incomoda com a forma em que é definido, desde que nele esteja 
+representada toda a troca de experiência entre a equipe técnica e a equipe conhecedora do problema a ser resolvido. Nele é materializado aquilo que é chamado
+de LINGUAGEM UBÍQUA. 
+
+Essa linguagem é a base da comunicação. É constantemente sintonizada e adequada à troca de conhecimento, que deve ser um ciclo virtuoso de comunicação e atualização
+do Modelo para que este sempre represente o conhecimento geral sobre o negócio.
+
+Talvez, a única visão rígida sobre esse ciclo virtuoso seja que nenhuma alteração seja feita no Modelo sem que ela seja representada no código desenvolvido. 
+Não há nenhuma restrição quanto a termos ou mesmo padrões, desde que esses representem o escopo do problema e facilite a comunicação.
+
+Além dos dois componentes mencionados, Modelo e Linguagem Ubíqua, Domain-Driven Design lança mão de alguns padrões de projeto já conhecidos pela comunidade. 
+Esses padrões geralmente representam bem a funcionalidade que resolvem e funcionam como uma maneira de abstrair conceitos progrmáticos que complicariam o negócio
+se fossem amplamente expostos, alguns deles são: Arquitetura em Camadas, Services e Repositories. Services abstraindo detalhes técnicos sobre Mensageria, Integração entre sistemas ou
+mesmo abstraindo operações que não dizem respeito a uma instância da Entidade de Negócio em si. Já Repositories armazenam característica de rescontrução das entidades de um estado persistente 
+para a representação escolhida pelo Modelo. Já Arquitetura em camadas defini que seu Software deve ter camadas bem delineadas e que representem claramente o nível 
+de serviço que cada um delas oferece. Por mais que esta última prática represente mais uma característica técnica, é conhecido que a separação em camadas favorece 
+a comunicação com o corpo técnico do negócio, uma vez que funcionam como arcabolsos de representações que abstraem bem detalhamentos ténicos. Já, por outro lado, 
+também beneficia características técnicas dos softwares, como a manutenabilidade.
+
+Os componentes do DDD por si só são bem simples quanto a seu emprego. O detalhe mesmo está quando utilizar um padrão ou outro e a intensidade da aplicação. Está entre 
+separar aspectos de negócio em classes de negócio ou em classe de Serviço, por exemplo. Outras características são mais fáceis de identificar, por exemplo, Entidades
+que estão em estado persistente, ou seja, armazenadas e que precisem ser reconstruídas para tratamento por parte do código de negócio. O que facilita a visão sobre, 
+Respositories, que não se limitam a acesso de dados através de um banco de dados como um DAO. Podem requisitar informações de um serviço, por exemplo.
+
+Além disso, a parte mais importante é a comunicação e a troca de conhecimento sobre o negócio, que não deve parar, deve ser cíclica, tal qual o PDCA. Dessa maneira, 
+gera-se diversas opotunidades para se evoluir o modelo, fazendo a melhoria contínua uma realidade diária no ciclo de desenvolvimento de software. A mudança voltada 
+a melhoria é uma realidade contínua no DDD, que se propõe à constante reavaliação e feedback.
+
+## Afinidade com padrões de projeto
+
+Padrões de projeto existem para resolver diversos problemas. Cada padrão resolve um problema bem conhecido de maneira a padronizar a solução. Problemas mal compreendidos
+resultam em padrões de projetos mal empregados, da mesma maneira que padrões de projetos inapropriados resolvem problemas inadequados.
+
+O DDD por si só já define os padrões com o qual tem bastante afinidade, mas isso não quer dizer que outros não possam ser empregados. A máxima de qualquer projeto
+de software deve ser a atenção ao negócio que está em plena solução. Desde que haja entrega de valor, tangível ou intangível, e represente bem o domínio do problema,
+qualquer ferramenta pode ser empregada. Lembrando que o DDD já define duas ferramentas importantíssimas para o desenho e comunicação: Modelo e Linguagem Ubíqua. 
+Embora outros componentes presentes no DDD, mas não mencionados, também são muito importantes. Um deles é o emprego de Value Objects.
+
+### Entity vs. Value Objects
+
+A característica principal de uma Entidade é que ela é mutável, portanto, deve ter maneira apropriada de rastreio de sua "personalidade" ao logo de todas as mudanças, 
+uma vez que, sabido os estados iniciais de qualquer dada Entidade, não é possível identificá-la. É comum e apropriado o uso de chaves naturais, ou chaves de negócio. 
+Elas facilitam a definição da identidade, anteriormente chamada de personalidade, de qualquer instância. Mas é comum o uso de chaves derivadas de tecnologias dos 
+Sistemas Gerenciadores de Base de Dados, apesar que não é bom confundí-las, pois pode impor à comunicação detalhes que só dizem respeito ao Banco e não ao negócio.
+
+Já Values, ou Value Objects, não têm esse problema. Pois o seu estado inicial é também seu estado final. A única maneira de mudarmos o estado relacionado a um Value é 
+a sua completa substituição. Não contêm relevância o suficiente para mantermos o rastreio sobre suas diversas alterações de estado. Mas não são menos importantes que 
+as Entidades. Essa mudança de comportamento é avaliada caso a caso. Ou seja, em certos domínios uma certa Entidade possa ser vista como Value e para outros domínios não.
+
+Mesmo que em um Domínio o problema a ser resolvido é a criação de novas tinturas a partir de tintas já existentes, não necessariamente Tintas e Tinturas serão entidades. 
+Como exemplo, podemos perguntar ao Negócio o que realmente importa em uma Tintura resultante da mistara entre duas Tintas. Ao misturar duas, eu mudo uma das tintas 
+utilizadas ou crio nova partir da mesma mistura? Misturas feitas mais de uma vez, gerarão vários outras Tintas ou alterarão as já resultantes de outros processos?
+Importa saber se uma tinta era azul e agora é rosa?
+Todas essas perguntas devem ser respondidas pelo corpo técnico do domínio. Apenas eles podem definir essas características de cada singular instância do negócio. 
+Todas elas foram perguntas de negócio com o propósito de resolver problemas do negócio, apesar de ajudarem nessas definições dentro do projeto de software.
+
+O grande trunto de Values é que eles produzem menos efeitos colaterais que Entidades. A mudança constante de estado em Entidade leva a necessidade de um cuidado maior 
+sobre os aspectos e situações em que ocorrem essas mudanças. Já Values não têm essa preocupação. Pois 
+a substituição de estado é feita como um todo, o que remove a necessidade do rastreio de identidade. Uma Entidade, se alterada, gera a encessidade de atualização 
+do novo estado para todos os seus inscritos, enquanto novos Values só são necessários quando o novo valor for reutilizado. Values existentes nunca são alterados.
+Values são apenas criados ou destruídos.
+
+
+### Specification
+
+Specs são definições poderosas. Elas flexibilizam a comunicação, uma vez que é mais fácil definir o domínio em termos léxicos. Specs evitam a recorrente repetição 
+descritiva de restrições de negócio e consolidam todo o valor agregado sobre esse conhecimento em um único termo.
+
+O ganho não é meramente comunicacional. Além de ser muito poderoso para o negócio, padroniza a maneira com que Entidades e Values são avaliados dentro do domínio do negócio 
+ou mesmo entre outras camadas. Podem ser utilizados para definir como um objeto é construído ou como um objet é selecionado, sendo esta última opção a mais empregada.
+
+Para conhecimento, Creteria, utilizada em frameworks de ORM, baseia-se nesse Pattern, embora utilize uma abordagem mais flexível de criação das instâncias de 
+Especificações.
+
+Como analogia, podemos definir Especificações como as restrições que produtos de uma estante devam ser filtrados. Se defino que as minhas especificações são Laptops 
+de 512gb de ram, 500gb de hd e tela de 13 polegadas, as estantes não podem fornecer nenhum outro produto que não responda a tais critérios. Dessa maneira, definimos 
+o termo apropriado para tais restrições e configuramos seus valores conforme a necessidade. Assim não é necessário especificar, descritivamente, toda vez os critérios
+utilizados, apenas os seus valores.
